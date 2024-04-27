@@ -1,0 +1,10 @@
+[package]
+name = "copy"
+version = "0.1.0"
+edition = "2021"
+description = "A command-line tool to handle various clipboard operations for files and directories in Zsh shell environments, written in Rust."
+repository = "https://github.com/kitsunefoxx/cli-copy.git"
+
+[dependencies]
+clap = "*"       # Update to the latest version
+clipboard = "*"   # Update to the latest version
