@@ -5,7 +5,6 @@ use std::path::{PathBuf};
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let matches = Command::new("cli-copy")
         .version("1.0")
-        .author("Your Name")
         .about("Handles various clipboard copying tasks")
         .arg(
             Arg::new("path")
@@ -13,13 +12,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .long("path")
                 .value_name("PATH")
                 .help("Copies the full path of the current directory or a specified file/folder"),
-        )
-        .arg(
-            Arg::new("file")
-                .short('f')
-                .long("file")
-                .value_name("FILE")
-                .help("Copies the path of the specified file"),
         )
         .arg(
             Arg::new("name")
@@ -41,13 +33,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             path
         };
         ctx.set_contents(path.to_string_lossy().into_owned())?;
-    }
-
-    if let Some(f) = matches.get_one::<String>("file") {
-        let path = std::env::current_dir()?;
-        let mut file_path = PathBuf::from(&path);
-        file_path.push(f);
-        ctx.set_contents(file_path.to_string_lossy().into_owned())?;
     }
 
     if let Some(n) = matches.get_one::<String>("name") {
