@@ -1,6 +1,6 @@
-use clap::{Command, Arg};
+use clap::{Arg, Command};
 use clipboard::{ClipboardContext, ClipboardProvider};
-use std::path::{PathBuf};
+use std::path::PathBuf;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let matches = Command::new("cli-copy")
